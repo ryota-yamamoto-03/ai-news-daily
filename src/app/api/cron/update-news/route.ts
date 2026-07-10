@@ -3,7 +3,8 @@ import { revalidatePath } from "next/cache";
 import { runNewsPipeline } from "@/lib/news/pipeline";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+// Vercel Hobbyプランの上限（60秒）に合わせる
+export const maxDuration = 60;
 
 /**
  * Vercel Cron から毎日 22:00 UTC（= 翌朝 7:00 JST）に呼び出される更新エンドポイント。
