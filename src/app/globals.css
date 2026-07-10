@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 放送局スタイルのダークテーマ（デフォルト） */
+    --background: 222 66% 6%;
+    --foreground: 210 40% 98%;
+    --card: 221 60% 9%;
+    --card-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 66% 6%;
+    --secondary: 219 50% 14%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 219 45% 14%;
+    --muted-foreground: 215 25% 68%;
+    --accent: 217 91% 57%;
+    --accent-foreground: 210 40% 98%;
+    --border: 218 40% 20%;
+    --input: 218 40% 20%;
+    --ring: 217 91% 57%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-navy-950 text-foreground antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(46, 124, 246, 0.14), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 110%, rgba(225, 29, 46, 0.06), transparent);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgba(225, 29, 46, 0.6);
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* ガラスモーフィズム共通スタイル */
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-md;
+  }
+
+  /* 見出し等の光沢テキスト */
+  .text-glow-red {
+    text-shadow: 0 0 18px rgba(255, 45, 63, 0.6);
+  }
+
+  .text-glow-blue {
+    text-shadow: 0 0 18px rgba(57, 195, 242, 0.5);
+  }
+}
+
+@layer utilities {
+  /* 動きに敏感なユーザーにはアニメーションを止める（WCAG配慮） */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
